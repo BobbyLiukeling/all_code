@@ -1,0 +1,20 @@
+<!doctype html:5>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="tetx/html">
+    <title>HTML框架</title>
+  </head>
+    <frameset rows="30%,*"><!--第一层框架列框架-->
+      <frame scr="first.html" name="topframe" noresize="noresize"/><!--scr是子HTML的文件名，name是在此HTML中给子HTML的命名-->
+      <frameset cols="20%,*"><!--嵌套框架，行框架-->
+         <frame scr="" name="" noresize="noresize"/>
+         <frame scr="" name="" noresize="noresize"/>
+      </frameset>
+      <noframes><!--当浏览器不支持框架集的时候就会弹出这句话-->
+        <body>
+          此浏览器不支持框架
+        </body>
+      </noframes>
+    </frameset>
+</html>

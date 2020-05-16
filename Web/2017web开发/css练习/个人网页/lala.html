@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>个人主页</title>
+  <link rel="stylesheet" href="lala.css" type="text/css">
+  <script type="text/javascript" src="demo.js"></script>
+</head>
+<body>
+  <div id="back"></div>
+  <div class="content">
+    <div class="header" >
+      <div class="head-picture" align="center">
+        <img class="image1" src="Bobby.jpg" alt="Bobby" width=85% height=200px >
+      </div>
+      <div class="introduce"align="center">
+        <table>
+          <tr><h2>Bobby</h2></tr>
+          <tr><h3>性别：女</h3></tr>
+          <tr><h3>专业：计算机</h3></tr>
+          <tr><h3>现居地：成都</h3></tr>
+        </table>
+      </div>
+    </div>
+    <div class="main">
+      <table width="100%" id="c">
+        <tr class="tr1" ><td style="text-align:center">web语言发展简史</td></tr>
+        <tr><td ><hr style="border:3px double #F9F6AF;width:90%"></td></tr>
+        <tr>
+          <td style="text-align: center">
+            <span>时间：2017.10.11</span>
+            <span>来源：</span>
+            <span>浏览次数：</span>
+            <span>
+              字号：[
+              <a href="javascript:changesize('20')">大</a> 
+              <a href="javascript:changesize('16')">中</a>
+              <a href="javascript:changesize('12')">小</a>
+              ]
+            </span>
+            <span style="padding-left: 10px">保护色：
+              <input onclick="changecolor('#F9F6AF')" type="image" src="color1.png" width="13" height="13">
+              <input onclick="changecolor('#9DDBF4')" type="image" src="color2.png" width="13" height="13">
+              <input onclick="changecolor('#DEDEDE')" type="image" src="color3.png" width="13" height="13">
+              <input onclick="changecolor('#F9D1D9')" type="image" src="color4.png" width="13" height="13">
+              <input onclick="changecolor('#E4C8F8')" type="image" src="color5.png" width="13" height="13">
+              <input onclick="changecolor('#FFFFFF')" type="image" src="color6.png" width="13" height="13">              
+            </span>
+          </td>
+        </tr>
+        <tr class="td1" id="article_content">
+          <td  >
+              <p class="p1">Web 1.0（信息共享） Web技术发展的第一个阶段就是静态技术阶段，
+                在这个阶段，HTML语言就是Web向用户展示信息的最有效载体。在这个阶段，是以编辑为特征，
+                网站提供给用户的内容是网站编辑处理后的，用户阅读网站提供的内容，这个过程是网站向用户的意向行为，
+                其代表的站点主要有新浪，搜狐，雅虎，谷歌，网易等。</p>
+              <p class="p1">Web 2.0（信息共建） web技术发展的第二个阶段是动态技术阶段，在Web 1.0时代，
+                Web服务器会返回整个页面或者文档，但随着能AJAX(2005)的出现，使得动态网页逐渐发展，
+                AJAX允许客户端的JavaScript脚本为局部页面提供请求服务，然后可以在无需回到服务器情况下动态刷新部分页面，
+                也就是更新浏览器中的document对象，通常称为DOM。在这个阶段加强了网站与用户之间的互动，
+                网站内容基于用户提供，网站的诸多功能也由用户参与建设，实现了网站与用户的双向互动交流，
+                Web2.0不同于Web1.0的最大之处在于它的互动性，用户拥有自己的数据，并完全基于WEB,
+                所有功能都能通过浏览器完成。这个时期典型的代表有：社交网络，博客中国等。</p>              
+          </td>          
+        </tr>
+        <tr height="250px">
+          <td>
+            <P class="p2">来源：<a href="http://www.baidu.com.cn">百度</a></P>
+            <p class="p2">2017.10.11</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

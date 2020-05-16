@@ -1,0 +1,32 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppdbg",
+      "name": "F:\\GitHubCode\\Code\\Csjjg\\严蔚敏《数据结构》的全部代码实现（C语言）\\ch2",
+      "project": "",
+      "cwd": "${workspaceRoot}",
+      "program": "${debugInfo.target}",
+      "processId": "0",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${env.MINGW_PREFIX}\\bin\\gdb.exe",
+      "externalConsole": true
+    },
+    {
+      "type": "native",
+      "name": "F:\\GitHubCode\\Code\\Csjjg\\严蔚敏《数据结构》的全部代码实现（C语言）\\ch2(1)",
+      "project": ""
+    },
+    {
+      "type": "cppdbg",
+      "name": "Debug",
+      "project": "Debug",
+      "cwd": "${workspaceRoot}",
+      "program": "${debugInfo.target}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${env.MINGW_PREFIX}\\bin\\gdb.exe",
+      "externalConsole": true
+    }
+  ]
+}

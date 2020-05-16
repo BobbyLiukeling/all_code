@@ -1,0 +1,90 @@
+<!DOCTYPE html><!--prj_8_1.html-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>留言板</title>
+  <link rel="stylesheet" type="text/css" href="message_board.css">
+</head>
+<body>
+  <div id="div0">
+    <div id="div1">
+      <table>
+        <tr style="text-align:center;">
+          <td id="bt1">留言板</td>
+          <td id="bt2">科技工作者建议</td>
+        </tr>
+      </table>
+    </div>
+    <div id="div2">
+      <form method="post" name="message" action="http://www.baidu.com.cn/" target="">
+        <table>
+          <tr class="td1">
+            <td>发表留言</td>
+          </tr>
+        </table>
+        <table class="tb1" cellspacing="1px" border="1" bordercolor="#a0c6e5" style="border-collapse:collapse">
+        <!--border-collapse:collapse: 合并边框-->
+        <!--cellpadding:单元格与单元格之间的距离，cellspacing:单元格与外边框留白之间的距离--> 
+          <tr>
+            <td class="td2">姓名</td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td class="td2">电子邮件</td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td class="td2">分类</td>
+            <td>
+              科技工作者建议
+              <input type="radio" name="radio1">不保密
+              <input type="radio" name="radio2">保密
+              留言类型：
+              <select name="select" size="2">
+                <option value="a1">空白</option>
+                <option value="a2">投诉</option>
+                <option value="a3">咨询</option>
+                <option value="a4">建议</option>
+                <option value="a5">反馈</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="td2">留言</td>
+            <td>
+              <textarea name="textarea1" wrap="virtual" rows="4"></textarea>
+              <!--
+                wrap="virtual":自动换行
+                wrap="physical":自动换行，并且按原样提交到服务器，所见即所得
+                wrap="wrap":不自动换行
+              -->
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+                注：如果您留言不便公开请选择保密                
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" name="submit" value="提交">
+              <input type="reset"  name="reste" value="重置">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <ul>
+                <li>请遵循国家有关法律</li>
+                <li>本网站拥有一切权利</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>

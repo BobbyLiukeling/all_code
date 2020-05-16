@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: text016类、栈 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP7A02.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/text016类、栈.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\C++练习\text016类、栈\text016类、栈.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP7A02.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP7A03.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/text016类、栈.pdb" /debug /machine:I386 /out:"Debug/text016类、栈.exe" /pdbtype:sept 
+".\Debug\text016类、栈.obj"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP7A03.tmp"
+<h3>Output Window</h3>
+Compiling...
+text016类、栈.cpp
+D:\C++练习\text016类、栈\text016类、栈.cpp(35) : error C2597: illegal reference to data member 'Coordinate::x' in a static member function
+D:\C++练习\text016类、栈\text016类、栈.cpp(36) : error C2597: illegal reference to data member 'Coordinate::y' in a static member function
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+text016类、栈.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

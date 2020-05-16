@@ -1,0 +1,50 @@
+{% extends 'html/head.html' %}
+{% block head %}
+{% load static %}
+    <div class="panel panel-default" style="margin-top:90px;margin-left:260px;">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="info">
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in manager %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.manage_name }}</td>
+                        <td>{{ i.password }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'def_manager'%}?id={{ i.id}}">删除&nbsp;<i
+                                    class="fa fa-trash"></i></a>
+                            {#                    <a style="margin-right: -80px;margin-left: 20px" class="btn btn-default btn-primary  editbtn"#}
+                            {#                       data-id="{{ i.student_no }}" data-toggle="modal" data-target="#myModal">修改<i class="fa fa-edit"></i></a>#}
+                            <a style="margin-right: -80px;margin-left: 20px" class="btn btn-primary"
+                               href="{% url 'edit_manager'%}?id={{ i.id}}">修改 &nbsp;<i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div style="text-align: center;margin-top: -20px">
+                <nav aria-label="Page navigation">
+
+                    <ul class="pagination">
+                        {{ html_str }}
+
+                    </ul>
+
+                </nav>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="../static/bootstrap-3.3.7-dist/js/setupajax.js"></script>
+
+{% endblock %}

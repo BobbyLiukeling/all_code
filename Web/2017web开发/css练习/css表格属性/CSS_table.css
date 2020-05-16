@@ -1,0 +1,16 @@
+body{
+  background-color: #D8C9C9;
+}
+
+li{
+  background-color: #ADC3D1;
+}
+
+ul{
+  list-style-image: url("color1.png");
+}
+
+ol{
+  list-style-type: decimal;
+  list-style-position: inside;
+}

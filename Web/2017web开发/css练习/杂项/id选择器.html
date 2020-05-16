@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-compatible" content="ID-edge">
+    <title>id选择器</title>
+    <style type="text/css">
+      #one{
+        font-weight:bold;}
+      #two{
+        font-size: 30px;
+        color:aqua;
+      }
+      div#three{
+        border:2px;
+        background-color: #333fff;
+    }
+    </style>
+  </head>
+  <body>
+    <p id="one">ID选择器1</p>
+    <p id="two">ID选择器2</p>
+    <div>布局块1</div>
+    <p id="one two">ID选择器3</p><!--id选择器不支持叠加-->
+    <div id="three">布局块2</div>
+  </body>
+</html>

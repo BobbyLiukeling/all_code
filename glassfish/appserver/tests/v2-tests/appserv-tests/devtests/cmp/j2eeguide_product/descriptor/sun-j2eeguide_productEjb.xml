@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sun-ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Sun ONE Application Server 7.0 EJB 2.0//EN' 'http://www.sun.com/software/sunone/appserver/dtds/sun-ejb-jar_2_0-0.dtd'>
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<sun-ejb-jar>
+  <enterprise-beans>
+    <name>j2eeguide_productEjb</name>
+    <unique-id>758826287</unique-id>
+    <ejb>
+      <ejb-name>MyProduct</ejb-name>
+      <jndi-name>ejb/MyProduct</jndi-name>
+      <cmp>
+        <is-one-one-cmp>true</is-one-one-cmp>
+        <one-one-finders>
+          <finder>
+            <method-name>findByDescription</method-name>
+            <query-params>String desc</query-params>
+            <query-filter>desc == description</query-filter>
+            <query-variables/>
+          </finder>
+          <finder>
+            <method-name>findInRange</method-name>
+            <query-params>double low, double high</query-params>
+            <query-filter>price &gt; low &amp;&amp; price &lt; high</query-filter>
+            <query-variables/>
+          </finder>
+        </one-one-finders>
+      </cmp>
+      <principal>
+        <name></name>
+      </principal>
+      <ior-security-config>
+        <transport-config>
+          <integrity>NONE</integrity>
+          <confidentiality>NONE</confidentiality>
+          <establish-trust-in-target>NONE</establish-trust-in-target>
+          <establish-trust-in-client>NONE</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>USERNAME_PASSWORD</auth-method>
+          <realm></realm>
+          <required>FALSE</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>NONE</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <refresh-period-in-seconds>599</refresh-period-in-seconds>
+      <commit-option>COMMIT_OPTION_B</commit-option>
+      <bean-cache>
+        <max-cache-size>60</max-cache-size>
+        <is-cache-overflow-allowed>TRUE</is-cache-overflow-allowed>
+        <cache-idle-timeout-in-seconds>600</cache-idle-timeout-in-seconds>
+        <removal-timeout-in-seconds>6000</removal-timeout-in-seconds>
+        <victim-selection-policy>FIFO</victim-selection-policy>
+      </bean-cache>
+    </ejb>
+    <pm-descriptors>
+      <pm-descriptor>
+        <pm-identifier>IPLANET</pm-identifier>
+        <pm-version>1.0</pm-version>
+        <pm-class-generator>com.iplanet.ias.persistence.internal.ejb.ejbc.JDOCodeGenerator</pm-class-generator>
+        <pm-mapping-factory>com.iplanet.ias.cmp.NullFactory</pm-mapping-factory>
+      </pm-descriptor>
+      <pm-inuse>
+        <pm-identifier>IPLANET</pm-identifier>
+        <pm-version>1.0</pm-version>
+      </pm-inuse>
+    </pm-descriptors>
+    <cmp-resource> 
+      <jndi-name>jdo/pmf</jndi-name> 
+      <default-resource-principal>
+        <name>mv</name>
+        <password>mv</password>
+      </default-resource-principal>
+    </cmp-resource>
+  </enterprise-beans>
+</sun-ejb-jar>

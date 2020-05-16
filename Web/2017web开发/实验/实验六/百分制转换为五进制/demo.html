@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--prj_10_1.html-->
+<!--
+  百分制转换为五进制
+  2017.11.18
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>成绩评定</title>
+  <script type="text/javascript">
+    function convertion(score) {
+      var result;
+      var level = 0;
+      if (score >= 90) { level = 1; }
+      if (score >= 80 && score < 90) { level = 2; }
+      if (score >= 70 && score < 80) { level = 3; }
+      if (score >= 60 && score < 70) { level = 4; }
+      if (score < 60) { level2 = 5; }
+      switch (level) {
+        case 1: { result = "优秀"; break; }
+        case 2: { result = "良好"; break; }
+        case 3: { result = "中等"; break; }
+        case 4: { result = "及格"; break; }
+        default: { result = "不及格"; break; }
+      }
+      return result;
+    }
+
+    
+    
+
+    function get(id)
+    {
+      return document.getElementById(id);
+    } 
+    
+    function printRank()//打印结果 
+    {  
+      var score = prompt("请输入你的成绩");   
+      get("textScore").value=("课程成绩为："+score);
+      var rank = convertion(score);
+      alert("成绩等级为：" + rank);
+      get("textRank").value=("成绩等级为"+rank);
+    }     
+  </script>
+  <link rel="stylesheet" href="demo.css" type="text/css">
+</head>
+
+<body>
+  <div id="div1">
+      <h3>课程成绩评定</h3>
+      <form action="" id="Form">
+      <input type="button" value="请输入成绩" onclick="printRank()"><br/>
+      <input type="text" id="textScore" name="textScore" readonly="true">
+      <input type="text" id="textRank" name="textRank" readonly="true">
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+{% include 'html/head.html' %}
+{% load static %}
+{% block head %}
+    <div class="row">
+    <div class="col-md-6 col-md-offset-1" style="margin-top:200px;margin-left:450px;">
+    <form action="/edit_student/" method="post" class="form-horizontal" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" value="{{ edit_student.student_name }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">学号</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="no" value="{{ edit_student.student_no }}">
+            </div>
+        </div>
+      <div class="form-group">
+            <label for="" class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-10">
+               <select class="form-control" name="male">
+                   <option  disabled="disabled">{{ edit_student.male }}</option>
+                   <option>男</option>
+                   <option>女</option>
+               </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">民族</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="nation" value="{{ edit_student.nation }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">班级</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="classes" value="{{ edit_student.classes }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">联系电话</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="contact" value="{{ edit_student.contact }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">宿舍序号</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="apartment" >
+                  <option selected="selected"  value="{{ edit_student.apartment.id}}" disabled="disabled" style="font-size: 1.5em">原宿舍是&emsp;&emsp;{{ edit_student.apartment.apartment_no.apartment_name }}&emsp;&emsp;{{ edit_student.apartment.dormitoryno }}</option>
+                    {% for i in empty %}
+                       <option  style="color: red;font-size: 1.5em" value="{{ i.id }}">{{ i.id }}&emsp;&emsp;&emsp;&emsp;&emsp;{{ i.apartment_no.apartment_name }}&emsp;&emsp;{{ i.dormitoryno }}&emsp;&emsp;已住汉族同学{{ i.han }}人&emsp;&emsp;已住少数民族同学{{ i.others }}人</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group pull-right">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-warning">保存&nbsp;<i class="fa fa-comment fa-lg"></i></button>
+            </div>
+        </div>
+
+    </form>
+    </div>
+    </div>
+{% endblock %}

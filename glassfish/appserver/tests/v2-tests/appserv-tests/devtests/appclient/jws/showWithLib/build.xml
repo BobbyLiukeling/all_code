@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project [
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<!ENTITY commonSetup SYSTEM "file:./../../../../config/properties.xml">
+<!ENTITY commonBuild SYSTEM "file:./../../../../config/common.xml">
+<!ENTITY testproperties SYSTEM "file:./build.properties">
+]>
+
+<project name="showWithLib" default="usage" basedir=".">
+
+
+    &commonSetup;
+    &commonBuild;
+    &testproperties;
+
+    <property name="src" value="."/>
+
+    <import file="../../appclient.xml"/>
+
+    <!-- Props that allow reuse from showWithSignedLib -->
+    <property name="lib.jar.path" value="lib.jar"/>
+
+    <target name="build" depends="build.ear"/>
+    
+    <target name="sign.jar" depends="build.lib">
+        <signjar verbose="true" jar="${assemble.dir}/lib/lib.jar" alias="s1as" storepass="changeit"
+                 keypass="changeit" keystore="${env.S1AS_HOME}/domains/domain1/config/keystore.jks"
+                 signedjar="${assemble.dir}/lib/signedlib.jar"/>
+    </target>
+
+    <target name="build.ear" depends="build.lib,build.client">
+        <delete file="${assemble.dir}/${appname}App.ear"/>
+        <mkdir dir="${assemble.dir}"/>
+        <mkdir dir="${build.classes.dir}/META-INF"/>
+        <!-- <copy file="${src}/sun-application.xml" tofile="${build.classes.dir}"/> -->
+        <copy file="ear/application.xml" tofile="${build.classes.dir}"/>
+        <jar jarfile="${assemble.dir}/${appname}App.ear">
+            <fileset dir="${assemble.dir}">
+                <include name="*.jar"/>
+                <include name="lib/${lib.jar.path}"/>
+            </fileset>
+            <fileset dir="${build.classes.dir}">
+                <include name="META-INF/sun-application.xml"/>
+                <include name="META-INF/application.xml"/>
+            </fileset>
+        </jar>
+    </target> 
+   
+    <target name="build.lib" depends="compile">
+        <mkdir dir="${assemble.dir}"/>
+        <mkdir dir="${assemble.dir}/lib"/>
+        <jar jarfile="${assemble.dir}/lib/lib.jar">
+            <fileset dir="${build.classes.dir}">
+                <include name="**/lib/*.class"/>
+            </fileset>
+        </jar>
+    </target> 
+    
+    <target name="compile" depends="clean">
+        <antcall target="compile-common">
+            <param name="src" value="."/>
+        </antcall>
+    </target>
+
+    <target name="build.client" depends="compile">
+        <mkdir dir="${assemble.dir}"/>
+        <antcall target="package-appclientjar-common">
+            <param name="appclientjar.files" value="${build.classes.dir}"/>
+            <param name="application-client.xml" value="client/application-client.xml"/>
+            <param name="sun-application-client.xml" value="client/sun-application-client.xml"/>
+            <param name="appclientjar.classes" value="**/client/*.class" />
+            <param name="appclient.jar" value="${assemble.dir}/${appname}-client.jar"/>
+        </antcall>
+    </target>
+
+    <target name="deploy" depends="deploy.ear"/>
+
+    <target name="undeploy" depends="undeploy.ear"/>
+
+<!--    <target name="undeploy.ear">
+        <antcall target="undeploy-common"/>
+    </target>
+-->
+    
+    <target name="run" depends="init-common,test.embedded.client"/>
+
+    
+    <target name="usage">
+        <antcall target="usage-common"/>
+    </target>
+
+</project>

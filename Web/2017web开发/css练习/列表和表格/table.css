@@ -1,0 +1,23 @@
+#customers{
+  font-family: "Trebuchet MS", "Lucida Sans Unicode";
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#customers td,#customers th{
+  font-size: 13px;
+  border: 1px solid #98bf21;
+}
+
+#customers th{
+  font-size: 14px;
+  text-align: left;
+  background-color: #a7c942;
+  color: #ffffff;
+}
+
+#customers tr.alt td{
+  color: #000000;
+  background-color: #eaf2d3;
+  clear: both;
+}

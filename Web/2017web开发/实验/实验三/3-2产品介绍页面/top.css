@@ -1,0 +1,25 @@
+ul{
+  list-style-type: none;/*去掉表项前面的符号*/
+  text-align: center;
+}
+
+li{
+  display: inline;/*内联样式，就是li里面的显示都不换行，所有的li都在一行*/
+}
+
+#div1{
+  background-image: url("img17.jpg");
+  background-size: 100% 100%;  
+  width: 60px;
+  height: 45px;
+  float: left;
+}
+ 
+#div2{
+  width: 980px;
+  height: 45px;
+  text-decoration: none;
+  color: #000000;
+  background-attachment: hover;
+}
+

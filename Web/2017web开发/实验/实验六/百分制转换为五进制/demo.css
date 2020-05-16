@@ -1,0 +1,17 @@
+#div1 {
+  width:300px;
+  height: 300px;
+  background-color: #000000;
+  padding: 100px auto;
+  color: #ffffff;
+  font-size: 24px;
+  border:8px double #009933;
+  text-align: center;
+}
+#Form input{
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  font-size: 30;
+}

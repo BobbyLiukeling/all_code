@@ -1,0 +1,40 @@
+﻿  demo.cpp
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(64): error C2065: “BorrowBook”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(64): error C2275: “Teacher_Reader”: 将此类型用作表达式非法
+          f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\teacher_reader.h(5) : 参见“Teacher_Reader”的声明
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(64): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(65): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(65): error C2228: “.getfilename”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(80): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(80): error C2228: “.borrow”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(85): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(85): error C2228: “.returnBook”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(107): error C2065: “BorrowBook”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(107): error C2275: “Student_reader”: 将此类型用作表达式非法
+          f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\student_reader.h(4) : 参见“Student_reader”的声明
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(107): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(108): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(108): error C2228: “.getfilename”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(122): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(122): error C2228: “.borrow”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(127): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(127): error C2228: “.returnBook”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(149): error C2065: “BorrowBook”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(149): error C2275: “Outside_campus_Reader”: 将此类型用作表达式非法
+          f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\outside_campus_reader.h(6) : 参见“Outside_campus_Reader”的声明
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(149): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(150): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(150): error C2228: “.getfilename”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(164): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(164): error C2228: “.borrow”的左边必须有类/结构/联合
+          类型是“unknown-type”
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(169): error C2065: “Bor”: 未声明的标识符
+f:\githubcode\code\c++\图书管理系统 - 副本 - 副本\图书管理系统\readertype.h(169): error C2228: “.returnBook”的左边必须有类/结构/联合
+          类型是“unknown-type”

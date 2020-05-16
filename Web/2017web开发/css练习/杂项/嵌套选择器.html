@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>嵌套选择器</title>
+  <style>
+    p b{
+      color:brown;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <p>嵌套使用<b>用<b>css</b></b>标记的方法</p>
+  <!--b为p的嵌套标记，所以无论是子b标记还是孙b标记均可以实现效果-->
+  
+  嵌套之外的<b>标记</b>不生效
+  <!--b未嵌套在p中所以无任何效果-->
+</body>
+</html>

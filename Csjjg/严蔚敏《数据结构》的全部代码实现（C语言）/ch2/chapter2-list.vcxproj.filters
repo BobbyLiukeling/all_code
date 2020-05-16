@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ALGO2-1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-10.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-11.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algo2-12.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algo2-13.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ALGO2-2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ALGO2-3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ALGO2-4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algo2-6.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-7.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo2-9.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bo2-1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-2.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-31.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-6.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bo2-7.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BO2-8.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bo2-9.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-31.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-32.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-6.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-7.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-8.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAIN2-9.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\chapter2-1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="c1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-1.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-2.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-3.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-4.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-5.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C2-6.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UpgradeLog.htm" />
+    <None Include="UpgradeLog2.htm" />
+    <None Include="UpgradeLog3.htm" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}机构课程{% endblock %}
+
+{% block head_middle %}
+    <div class="middle companyheader">
+        <div class="wp">
+            <img class="fl" style="width: 112px;height: 103px" src="{{ MEDIA_URL }}{{ course_org.img }}"/>
+            <div class="head fl">
+                <h1>
+                    {{ course_org.name }}
+                    <img src="/static/images/authentication.png"/>
+                    <img src="/static/images/gold.png"/>
+                </h1>
+                <p class="fl">
+                    <span class="fl" style="margin-top:8px;color:#848484;">推荐指数： </span>
+                    <span class="precision company-credit" data-star-scope="5.0"></span>
+                    <span class="key">5.0</span>
+                </p>
+            </div>
+            <div class="btn fr collectionbtn  notlogin
+                 " data-favid="22" data-fav-type="1" id="jsRightBtn">
+                {% ifequal has_fav False %}
+                    收藏
+                {% endifequal %}
+                {% ifequal has_fav True %}
+                    已收藏
+                {% endifequal %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block head_nav %}{% endblock %}
+
+
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li><a href="/org/list/">课程机构</a>></li>
+                <li>机构课程</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="wp list personal_list comp">
+            <div class="left">
+                <ul>
+                    <li class=""><a href="/org/home/{{ course_org.id }}">机构首页</a></li>
+                    <li class="active2"><a href="/org/coursr/{{ course_org.id }}">机构课程</a></li>
+                    <li class=""><a href="/org/desc/{{ course_org.id }}">机构介绍</a></li>
+                    <li class=""><a href="/org/teacher/{{ course_org.id }}">机构讲师</a></li>
+                </ul>
+            </div>
+
+            <div class="right companycenter layout">
+                <div class="head">
+                    <h1>机构课程</h1>
+                </div>
+                <div class="brief group_list">
+
+                    {% for course in all_courses %}
+                        <div class="module1_5 box">
+                            <a class="comp-img-box" href="/course/detail/{{ course.id }}/">
+
+                                <img width="214" height="195" src="{{ MEDIA_URL }}{{ course.image }}"/>
+                            </a>
+                            <div class="des">
+                                <a href="/course/detail/{{ course.id }}/"><h2>{{ course.name }}</h2></a>
+                                <span class="fl">课时：{{ course.learn_times }}<i class="key">0</i></span>
+                                <span class="fr">学习人数：{{ course.student }}</span>
+                            </div>
+                            <div class="bottom">
+                                <span class="fl">{{ course.course_org.name }}</span>
+                                <span class="star fr  notlogin
+                            " data-favid="13" data-fav-type="4">
+                            {{ course.fav_nums }}
+                        </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+                <div class="pageturn">
+                    <ul class="pagelist">
+                        <li class="active"><a href="?page=1">1</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        //收藏分享
+        function add_fav(current_elem, fav_id, fav_type) {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "/org/add_fav/",
+                data: {'fav_id': fav_id, 'fav_type': fav_type},
+                async: true,
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                },
+                success: function (data) {
+                    if (data.status == 'fail') {
+                        if (data.msg == '用户未登录') {
+                            window.location.href = "/login/";
+                        } else {
+                            alert(data.msg)
+                        }
+
+                    } else if (data.status == 'success') {
+                        current_elem.text(data.msg)
+                    }
+                },
+            });
+        }
+
+
+        $('#jsRightBtn').on('click', function () {
+            add_fav($(this), {{ course_org.id }}, 2);
+        });
+    </script>
+{% endblock %}

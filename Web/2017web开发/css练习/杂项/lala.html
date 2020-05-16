@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // function area(a,b,c)
+    // {
+    //   s=(parseInt(a.value)*parseInt(b.value)*parseInt(c.value));
+    //   alert("体积为："+s);
+    // }
+    function showsum()
+    {
+      document.write("a+b+c="+plus(2,3,4));
+    }
+    function plus(a,b,c)
+    {
+      return a+b+c;
+    }
+
+    function putinfo(message)
+    {
+      alert(message);
+    }
+   </script>
+</head>
+<body>
+  <input type="button" onclick="showsum()" value="结果">
+   <!-- <form action="">
+   <input type="text" name="a" id="">
+   <input type="text" name="b" id="">
+   <input type="text" name="c" id="">
+   <input type="button" onclick="area(a,b,c)" value="求面积"></form> -->
+   <input type="button" value="js输出语句" onclick="alert('js要输出的信息')">
+   <input type="button" value="通过函数输出语句" onclick="putinfo('函数要输出的信息')">
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿生成启动时间为 2017/11/2 9:26:39。
+     1>项目“F:\学习\C++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\常对象成员和常对象函数.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Coordinate.cpp demo.cpp Line.cpp
+         Line.cpp
+     1>f:\学习\c++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\coordinate.h(2): error C2011: “Coordinate”:“class”类型重定义
+                 f:\学习\c++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\coordinate.h(2) : 参见“Coordinate”的声明
+     1>f:\学习\c++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\line.cpp(9): error C2027: 使用了未定义类型“Coordinate”
+                 f:\学习\c++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\coordinate.h(2) : 参见“Coordinate”的声明
+     1>f:\学习\c++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\line.cpp(9): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+         demo.cpp
+         Coordinate.cpp
+         正在生成代码...
+     1>已完成生成项目“F:\学习\C++视频课程练习\常对象成员和常对象函数\常对象成员和常对象函数\常对象成员和常对象函数.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.94

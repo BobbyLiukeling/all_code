@@ -1,0 +1,42 @@
+<!doctype html:5>
+<html>
+  <head>
+    <meta http-equiv="Content" content="text/html" charset="UTF-8">    
+    <title>select optgroup</title>
+  </head>
+  <body>
+    <form>
+      下拉菜单<br/>
+      <select name="city" id="city">
+        <option value="beijing">北京</option>
+        <option select="select" value="shanghai">上海</option>
+        <!--select 下拉菜单默认选项是上海-->
+        <option value="nanjing">南京</option>
+        <option value="tianjin">天津</option>
+      </select><br/>
+
+      列表框<br/>
+      <select name="city" id="city" size="2" multiple="multiple">
+        <!--size定义下拉框一次显示的元素的个数
+            multiple多选属性-->
+        <option value="beijing">北京</option>
+        <option select="select" value="shanghai">上海</option>
+        <option value="nanjing">南京</option>
+        <option value="tianjin">天津</option>
+      </select><br/>
+   
+      选项组列表框<br/>
+      <select name="city" id="city" size="4" >
+        <optgroup label="一线城市">
+          <option value="beijing">北京</option>
+          <option select="select" value="shanghai">上海</option>
+        </optgroup>
+        <optgroup label="二线城市">
+          <option value="nanjing" select="select">南京</option>
+          <option value="tianjin">天津</option>
+        </optgroup>
+        </select><br/>
+
+    </form>
+  </body>
+</html>

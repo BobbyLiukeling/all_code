@@ -1,0 +1,64 @@
+<!doctype>
+<html>
+  <head>
+    <meta http-equiv="Content" content="text/html" charset="utf-8">
+    <title>常见表单元素</title>
+  </head>
+  <body>
+    <form name="regForm" method="post" action="http://www.ictek.cn">
+      <!--input标签-->
+      单行文本框<input type="text" name="username" id="username" maxlength="10" readonly="只读性"/></br>
+      <!--maxlength 是限制了文本输入的长度，10是最大输入长度，可以自定义
+      readonly=“  ”表示此属性的只读性，用户不可以对它进行读以外的操作-->
+
+      <label for="password">密码框</label><input type="password" name="password" id="password"/></br>
+      <!--type="password" 定义密码框，该字段中的字符将被掩码
+      label for="password"该属性可用于多个标签，
+      功能是在用户点击网页时使label里面的内容获得光标，从而使内容显著增强用户体验-->
+
+      隐藏域<input type="hidden" name="hidden" id="hidden"/></br>
+      <!--隐藏域中的内容用户不能读取-->
+
+      单选按钮<input type="radio" name="sex" id="male" checked="checked"/>男
+             <input type="radio" name="sex" id="female" checked="checked"/>女</br>
+             <!--对所给的选项进行选择，单选按钮只能选择其中一项
+              其中checked="checked" 是默认选项，表示系统默认选择此项，
+              如若代码所示两个都选为默认选项，则系统会自动转到最后一个为默认选项，
+              其中属性后面的值“checked”可以任意替换，checked=“123”，同样可以实现此功能
+              这个属性只适用radio和CheckBox-->
+
+      复选框<input type="checkbox" name="habby" value="1" id="football" checked="checked"/>足球
+            <input type="checkbox" name="habby" value="2" id="basketball" disabled="disabled"/>篮球
+            <!--disabled="disabled"表示禁用此选项，网页上会显示但是用户不能对它进行操作，
+              后面的值与checked一样可以是任意值disabled="lalalala",
+              此属性适用于多个input标签-->
+            <input type="checkbox" name="habby" value="3" id="tennis"/>网球</br>
+            <!--对所给的内容进行多项选择-->
+
+      图像域<input type="image" src="logo.gif" widtn="100px" height="20px"/><br/>
+      <!--src是图片的位置，width是宽，height是高-->
+
+      文件上传域<input type="file" name="file"/>足球<!----><br/>
+      提交按钮<input type="number" name="submit" value="提交按钮"/><br/>
+      <!--value中的文本将显示在网页上-->
+      重置按钮<input type="reset" name="reset" value="重置按钮"/><br/>
+      普通按钮<input type="button" name="button" value="普通按钮"/><br/>
+
+      
+      <!--button标签-->
+      button提交按钮<button  type"submit" name="submit2">提交按钮</button><br/>
+      button重置按钮<button type="reset" name="reset2"><b>重置按钮</b></button><br/>
+      button 普通按钮<button type="button" name="button2" disabled="disabled"><i>普通按钮</i></button><br/>
+      <!--button标签与input标签功能类似，但是button所提供的功能更加强大-->
+
+      <select name="city" id="city">
+          <option value="beijing">北京</option>
+          <option select="select" value="shanghai">上海</option>
+          <option value="nanjing">南京</option>
+          <option value="tianjin">天津</option>
+        </select>
+    </form>
+    <p hidden>这个段落应该被隐藏。</p>
+    <p >这个段落应该被隐藏。</p>
+  </body>
+</html>

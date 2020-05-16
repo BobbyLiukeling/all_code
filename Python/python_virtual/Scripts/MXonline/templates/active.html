@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>active</title>
+</head>
+<body>
+    <form action="/index/active/" method="post" autocomplete="off">
+        <div class="form-group marb20 ">
+            <label>注册验证码</label>
+            <input name="active" id="account_l" type="text" placeholder="请输入六位验证码" />
+        </div>
+        <div>
+            <input name="submit" type="submit" value="确定">
+        </div>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

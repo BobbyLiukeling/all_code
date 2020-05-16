@@ -1,0 +1,30 @@
+﻿生成启动时间为 2017/10/18 21:01:05。
+     1>项目“F:\学习\2017C++\实验三\类与对象\类与对象\类与对象.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp matrix.cpp
+         matrix.cpp
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C2238: 意外的标记位于“;”之前
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(10): error C2065: “arr”: 未声明的标识符
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(10): error C2228: “.push_back”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(17): error C2065: “arr”: 未声明的标识符
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(17): error C2228: “.resize”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(21): error C2065: “arr”: 未声明的标识符
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(31): error C2039: “arr”: 不是“matrix”的成员
+                 f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(6) : 参见“matrix”的声明
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(31): error C2065: “arr”: 未声明的标识符
+                 f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(6) : 参见“matrix”的声明
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.cpp(42): error C2065: “arr”: 未声明的标识符
+         main.cpp
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\学习\2017c++\实验三\类与对象\类与对象\matrix.h(17): error C2238: 意外的标记位于“;”之前
+         正在生成代码...
+     1>已完成生成项目“F:\学习\2017C++\实验三\类与对象\类与对象\类与对象.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:01.05

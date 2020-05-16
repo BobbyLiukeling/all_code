@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE project [
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<!ENTITY commonSetup SYSTEM "file:./../../../../config/properties.xml">
+<!ENTITY commonBuild SYSTEM "file:./../../../../config/common.xml">
+<!ENTITY testproperties SYSTEM "file:./build.properties">
+]>
+
+<project name="ooc" default="all" basedir=".">
+
+    &commonSetup;
+    &commonBuild;
+    &testproperties;
+
+    <target name="all" depends="clean,run,report"/>
+
+    <path id="compile.cp">
+        <pathelement location="${env.S1AS_HOME}/lib/toplink-essentials.jar"/>
+        <pathelement location="${env.APS_HOME}/lib/testng.jar"/>
+    </path>
+
+    <!-- Custom compilation for out-of-cointainer test -->
+    <target name="compile-client-ooc" depends="init-common">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac destdir="${build.classes.dir}" debug="on">
+           <src path="../framework"/>
+           <src path="client-ooc"/>
+           <classpath>
+              <path refid="compile.cp" />
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Standard compilation for JPA POJOs -->
+    <target name="compile-ejb" depends="init-common">
+        <antcall target="compile-common">
+            <param name="src" value="ejb"/>
+        </antcall>
+        <mkdir dir="${build.classes.dir}/META-INF"/>
+        <copy file="${persistence.xml}" tofile="${build.classes.dir}/META-INF/persistence.xml"/>
+    </target>
+
+    <target name="compile" depends="compile-ejb, compile-client-ooc">
+    </target>
+
+    <!-- not currently used -->
+    <target name="package-persistence" depends="compile">
+       <mkdir dir="${assemble.dir}"/>
+        <jar destfile="${assemble.dir}/${appname}-persistence.jar" update="true">
+             <metainf file="${persistence.xml}"/>
+             <fileset dir="${build.classes.dir}"
+                 includes="oracle/toplink/essentials/testing/models/cmp3/advanced/*.class"
+              />
+        </jar>
+    </target> 
+
+    <target name="build" depends="compile">
+    </target> 
+
+    <path id="run.cp">
+<!-- ${build.classes.dir} not defined during run target???
+        <pathelement location="${build.classes.dir}"/>
+-->
+        <pathelement location="${env.APS_HOME}/build/module/classes"/>
+        <pathelement location="${env.S1AS_HOME}/javadb/lib/derbyclient.jar"/>
+        <path refid="compile.cp"/>
+    </path>
+
+    <target name="run" depends="compile">
+       <java fork="yes"
+           classpathref="run.cp"
+           classname="org.testng.TestNG">
+           <jvmarg value="-ea"/>
+           <arg value="testng.xml"/>
+           <jvmarg value="-javaagent:${env.S1AS_HOME}/lib/toplink-essentials-agent.jar"/>
+       </java>
+    </target>
+
+    <!-- Generate the TestNG report -->
+    <target name="report">
+        <mkdir dir="test-report"/>
+        <junitreport todir="test-report">
+           <fileset dir="test-output">
+              <include name="*.xml"/>
+           </fileset>
+           <report format="noframes" todir="test-report"/>
+       </junitreport>
+    </target>
+
+    <target name="clean" depends="init-common">
+        <antcall target="clean-common"/>
+
+        <!-- clean-up Java2DB left-overs -->
+        <delete file="createDDL.jdbc"/>
+        <delete file="dropDDL.jdbc"/>
+
+        <!-- clean-up TestNG output -->
+        <delete dir="test-output"/>
+        <delete dir="test-report"/>
+    </target>
+
+</project>
+

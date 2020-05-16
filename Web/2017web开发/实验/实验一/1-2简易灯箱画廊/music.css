@@ -1,0 +1,53 @@
+body{
+  text-align: center;
+}
+
+.div1{
+  width: 900px;
+  height: 500px;
+  margin: 0px auto;/*外边距上下是0，左右自动*/
+}
+
+ul{
+  margin: 0px auot;
+  width: 800px;
+  list-style-type: none; /*列表前面无格式（如小圆点，方框等）*/
+  height: 120px;
+}
+
+li{
+  float: left;
+  width:110px;
+  height: 90px;
+  margin: 5px;
+}
+
+img{
+  border: 0;
+  width: 100px;
+  height: 80px;
+}
+
+h3{
+  font-size: 24px;
+  color: #3A2121;
+  padding: 10px auto;/*内边距*/
+}
+
+a{
+  color: #ffffff;
+  text-decoration: none;/*定义文本格式，此文本格式为默认*/
+}
+
+a:link,a:visited,a:active{
+  color: #0033cc;
+}
+
+/*a:link 未访问时的状态 
+a:visited 已访问过的状态 
+a:hover 鼠标移动到链接上时的状态 
+a:active 鼠标按下去时的状态 
+可设置color，text-decoration等属性*/
+a:hover{
+  border-bottom: 4px solid #ff0000;
+}/*鼠标悬停时有红色底边出现*/

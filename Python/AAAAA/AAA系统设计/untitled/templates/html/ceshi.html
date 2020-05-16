@@ -1,0 +1,95 @@
+{% extends "html/head.html" %}
+{% block head %}
+    <div class="row" style="margin-top:82px;margin-left:260px;">
+     <form action="{% url 'foo' %}" method="get" class="form-horizontal" style="margin-bottom: -10px">
+
+        <div class="form-group" style="margin-top: 15px">
+            <label for="" class="col-md-2 control-label" style="font-size: 1.3em;width: 6%">性别</label>
+            <div class="col-md-2">
+                <select class="form-control" name="male">
+                    <option selected="selected"></option>
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </div>
+
+            <label for="" class="col-md-2 control-label" style="font-size: 1.3em;width: 6%">年级</label>
+            <div class="col-md-2">
+                <select class="form-control" name="classes">
+                    <option selected="selected"></option>
+                    {% for foo in classes %}
+                        <option>{{ foo.classes }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <label for="" class="col-md-2 control-label" style="font-size: 1.3em;width: 6%">民族</label>
+            <div class="col-md-2">
+                <select class="form-control" name="nation">
+                    <option selected="selected"></option>
+                    {% for foo in nation %}
+                        <option>{{ foo.nation }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-1">
+                    <button type="submit" class="btn btn-warning">提交&nbsp;<i class=""></i></button>
+            </div>
+        </div>
+    </form>
+
+        <div id="table_info" class="panel panel-default" >
+        <input type="hidden" id="divno" value="{{len}}">
+        <div class="panel-heading">
+            <div class="panel-body">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>学号</th>
+                        <th>性别</th>
+                        <th>民族</th>
+                        <th>班级</th>
+                        <th>联系电话</th>
+                        <th>宿舍楼</th>
+                        <th>宿舍号</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in all_student %}
+
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.student_name }}</td>
+                            <td>{{ i.student_no }}</td>
+                            <td>{{ i.male }}</td>
+                            <td>{{ i.nation }}</td>
+                            <td>{{ i.classes }}</td>
+                            <td>{{ i.contact }}</td>
+                            <td>{{ i.apartment__apartment_no__apartment_name }}</td>
+                            <td>{{ i.apartment__dormitoryno }}</td>
+                            <td>
+                                <a class="btn btn-default btn-danger" href="/delete_student/?id={{ i.student_no }}">删除&nbsp;<i
+                                        class="fa fa-trash"></i></a>
+                                <a style="margin-right: -80px;margin-left: 20px" class="btn btn-default btn-primary"
+                                   href="/edit_student/?id={{ i.student_no }}">修改&nbsp;<i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                 <div style="text-align: center;margin-top: -20px">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        {{ html_str }}
+                    </ul>
+
+                </nav>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

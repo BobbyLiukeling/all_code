@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2002-2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<project name="OfflineConfig admin devtests" default="all" basedir=".">  
+
+<!-- ========== Initialize Properties =================================== -->
+
+    <property environment="env"/>
+    <property file="./build.properties"/>
+
+    <path id="test.compile.classpath">
+        <pathelement location="${appserv-se.jar}"/>
+        <pathelement location="${appserv-rt.jar}"/>
+        <pathelement location="${appserv-admin.jar}"/>
+        <pathelement location="${appserv-admin-ee.jar}"/>
+<!--
+        <pathelement location="${appserv-deployment-client.jar}"/>
+        <pathelement location="${imqjmsra.jar}"/>
+ -->
+        <pathelement location="${j2ee.jar}"/>
+        <pathelement location="${junit.jar}"/>
+       <pathelement location="${testng.jar}"/>
+    </path> 
+    <path id="test.run.classpath">
+       <pathelement location="${component.tests.classes.dir}"/>
+       <path refid="test.compile.classpath"/>
+<!--
+       <pathelement location="${schema2beans.jar}"/>
+       <pathelement location="${jmxri.jar}"/> 
+       <pathelement location="/export/ias/sqe-pe/codecoverage/jcov/lib/jcov.jar"/> 
+-->
+    </path>
+
+
+    <!-- init. Initialization involves creating publishing directories and
+         OS specific targets. --> 
+    <target name="init-tests" description="${component.name} initialization">
+        <tstamp>
+            <format property="start.time" pattern="MM/dd/yyyy hh:mm aa"/>
+        </tstamp>    
+        <echo message="Building component ${component.name}"/>
+        <mkdir dir="${component.tests.classes.dir}"/>
+        <delete dir="${tests.workfiles.dir}"/>
+        <mkdir dir="${tests.workfiles.dir}"/>
+        <copy  todir="${tests.workfiles.dir}">
+            <fileset dir="${testfiles.dir}" includes="*"/>
+        </copy>
+    </target>
+
+    <!-- all -->
+    <target name="all" depends="run-tests"
+            description="Build entire component">
+    </target>
+
+    <!-- clean -->
+    <target name="clean">
+        <delete dir="${component.publish.home}"/>
+    </target>
+
+
+<target name="build" depends="init-tests">
+  <echo message="Compiling {component.name}"/>
+  <javac srcdir="${testsrc.dir}" 
+         destdir="${component.tests.classes.dir}"
+         debug="${javac.debug}" 
+         optimize="${javac.optimize}"
+         source="${javac.source}" 
+         deprecation="${javac.deprecation}"
+         failonerror="true"
+         classpathref="test.compile.classpath">
+     <include name="**/*.java"/>
+  <!--   <include name="**/*Test.java"/>
+     <include name="**/*Tests.java"/>            -->
+  </javac>
+	
+</target>
+
+
+<target name="run-tests" depends="build">
+  <java fork="true" failonerror="true" 
+      classname="com.sun.enterprise.admin.config.OfflineConfigTest" >
+<!--	<jvmarg value="-Djcov.file=${jcov.file}"/> 
+-->
+      <arg line="-testpath ${tests.workfiles.dir}" />
+        <jvmarg value="-Xdebug"/>
+	<jvmarg value="-Xnoagent"/>
+	<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=25001"/>  
+      <classpath refid="test.run.classpath"/>
+  </java>
+</target>
+
+<target name="offline-commander" depends="build">
+  <java fork="true" failonerror="true" 
+      classname="com.sun.enterprise.admin.config.OfflineCommander" >
+<!--	<jvmarg value="-Djcov.file=${jcov.file}"/> 
+-->
+      <arg line="-testpath ${tests.workfiles.dir}" />
+      
+        <jvmarg value="-Xdebug"/>
+	<jvmarg value="-Xnoagent"/>
+	<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=25001"/>  
+
+      <classpath refid="test.run.classpath"/>
+  </java>
+</target>
+
+    <path id="tng-run.cp">
+        <path refid="test.run.classpath"/>
+        <pathelement location="${testng.jar}"/>
+    </path>
+    
+    <target name="run-tests-ng"
+            description="run examples with java"
+            depends="build" >
+        <java fork="yes"
+                classpathref="tng-run.cp"
+                classname="org.testng.TestNG" >
+             <arg value="./testng/testng.xml"/>
+             <jvmarg value="-ea"/>
+        </java>
+    </target>
+
+</project>
+	

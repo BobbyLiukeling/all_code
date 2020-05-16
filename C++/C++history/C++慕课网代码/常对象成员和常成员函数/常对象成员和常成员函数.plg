@@ -1,0 +1,46 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 常对象成员和常成员函数 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP76EC.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/常对象成员和常成员函数.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\C++慕课网代码\常对象成员和常成员函数\Coordinate.cpp"
+"D:\C++慕课网代码\常对象成员和常成员函数\demo.cpp"
+"D:\C++慕课网代码\常对象成员和常成员函数\Line.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP76EC.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP76FD.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/常对象成员和常成员函数.pdb" /debug /machine:I386 /out:"Debug/常对象成员和常成员函数.exe" /pdbtype:sept 
+".\Debug\Coordinate.obj"
+".\Debug\demo.obj"
+".\Debug\Line.obj"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP76FD.tmp"
+<h3>Output Window</h3>
+Compiling...
+Coordinate.cpp
+Line.cpp
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(7) : error C2512: 'Coordinate' : no appropriate default constructor available
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(7) : error C2512: 'Coordinate' : no appropriate default constructor available
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(8) : error C2678: binary '=' : no operator defined which takes a left-hand operand of type 'const class Coordinate' (or there is no acceptable conversion)
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(9) : error C2679: binary '=' : no operator defined which takes a right-hand operand of type 'class Coordinate *' (or there is no acceptable conversion)
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(15) : error C2440: 'delete' : cannot convert from 'const class Coordinate' to ''
+        No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+d:\c++慕课网代码\常对象成员和常成员函数\line.cpp(15) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+Skipping... (no relevant changes detected)
+demo.cpp
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+常对象成员和常成员函数.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><!--prj_6_1.html-->
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>日程表</title>
+  <style type="text/css">
+    *{
+       font-size: 13px;
+    }
+    #div0{
+      background: #eaeaea url("img12.jpg") no-repeat 0px 0px;
+      background-size: 720px 500px;
+      width: 720px;
+      height: 500px;
+    /*no-repeat :图片不重复，0px 0px 是指图片左上角的坐标*/
+    }
+
+    #div1{
+      width: 710px;
+      height: 60px;
+    }
+
+    h3{
+      font-size: 18px;
+      color: white;
+      padding: 10px 20px;
+      font-family: 微软雅黑；
+    }
+
+    #row1{
+      background: #e1e1e1;
+    }
+
+    #row2{
+      background: #e3e3e3;
+    }
+
+    #td1{
+      background: #f0f0f0;
+    }
+
+    #td2,#td3,#td4,#td5,#td6,#td7{
+      background: #fbfbfb;
+    }
+
+    #red{
+      color: red;
+    }
+
+    th{
+      color: #666666;
+    }
+
+    a{
+      background: url("img16.jpg") repeat-x;
+      width: 120px;
+      height: 24px;
+      text-align: center;
+      padding: 8px auto;
+      float: right;
+      display: inline;
+    }
+
+  </style>
+  <link rel="stylesheet" href="calender.css" type="text/css">
+</head>
+<body>
+  <div id="div0">
+    <div id="div1">
+      <h3>报告内容</h3>
+    </div>
+    <table cellspacing="1px" border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;">
+        <tr id="red" heigth="40px" colspan="3">
+        <p>会议平台不支持XP系统请大家用win7或win8</p> 
+        <strong style="float:left;">报告主题：持久性污染物研讨会</strong>
+          <a href="">精彩回放</a>
+        </tr>
+        <tr height="35px" id="row2">
+          <th>会议时间</th>
+          <th>会员名称</th>
+          <th>演讲人</th>
+        </tr>
+        <tr height="35px" id="td2">
+          <td rowspan="6"><p>2017年10月21日</p> 09:00-21:00</td>
+          <td>二噁英</td>
+          <td>刘文彬</td>
+        </tr>
+        <tr id="td3">
+          <td>优化PAHS和Dioxin分析仪在环境分析中的应用</td>
+          <td>孔晔</td>
+        </tr>
+        <tr id="td4">
+          <td>LCMS</td>
+          <td>朱怀恩</td>
+        </tr>
+        <tr id="td5">
+          <td>质普技术</td>
+          <td>陈志林</td>
+        </tr>
+        <tr id="td6">
+          <td>持久性有机物污染</td>
+          <td>苏丽萍</td>
+        </tr>
+        <tr id="td7">
+          <td>持久性有机物污染</td>
+          <td>张庆华</td>
+        </tr>
+    </table>
+    <table>
+
+    </table>
+  </div>
+</body>
+</html>

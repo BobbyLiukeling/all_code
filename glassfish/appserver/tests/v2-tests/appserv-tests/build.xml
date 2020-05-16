@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project [
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<!ENTITY commonSetup SYSTEM "file:./config/properties.xml">
+<!ENTITY commonBuild SYSTEM "file:./config/common.xml">
+<!ENTITY commonEEBuild SYSTEM "file:./config/ee-common.xml">
+<!ENTITY reporting SYSTEM "file:./config/report.xml">
+<!ENTITY run SYSTEM "file:./config/run.xml">
+<!ENTITY mail SYSTEM "file:./config/mail.xml">
+]>
+
+<project name="appserv-tests" default="usage" basedir=".">
+
+    &commonSetup;
+    &commonBuild;
+    &commonEEBuild;
+    &reporting;
+    &run;
+    &mail;
+
+    <target name="all"> 
+        <antcall target="sqetests"/>
+    </target>
+
+    <target name="all-ee" depends="clean">
+    <record name="runtest.output" action="start"/>
+        <ant dir="sqetests" target="run-eesqe-target"/>
+        <antcall target="report"/>
+        <antcall target="mail"/>
+    <record name="runtest.output" action="stop"/>
+    </target>
+
+    <target name="all-pe" depends="clean">
+    <record name="runtest.output" action="start"/>
+        <antcall target="startDerby"/>
+        <antcall target="startDomain"/>
+        <antcall target="sqetests"/>
+        <antcall target="stopDerby"/>
+        <antcall target="stopDomain"/>
+        <antcall target="create-report"/>
+        <antcall target="mail"/>
+        <antcall target="report-java"/>
+    <record name="runtest.output" action="stop"/>
+    </target>
+
+    <target name="only-ee" depends="ee-init, ee">
+    <record name="appserv-tests.log" action="start"/>
+        <antcall target="rename_results"/>
+        <record name="runtest.output" action="start"/>
+            <echo message="value of ee: ${ee}"/>
+            <ant dir="sqetests" target="run-eesqe-target"/>
+            <antcall target="stopee"/>
+            <antcall target="stopDerby"/>
+	    <antcall target="create-report"/>
+	    <antcall target="mail"/>
+            <antcall target="report-java"/>
+        <record name="runtest.output" action="stop"/>
+    <record name="appserv-tests.log" action="stop"/>
+    </target>
+
+    <!-- clean -->
+    <target name="clean">
+        <delete failonerror="false">
+            <fileset dir="${env.APS_HOME}" excludes="PE_*"
+                     includes="count.txt *.output test_results*"/>
+        </delete>
+    </target>
+
+    <!-- clobber -->
+    <target name="clobber-tests" depends="init-common">
+        <delete dir="${build.classes.dir}"/>
+        <delete failonerror="false">
+            <fileset dir="${env.APS_HOME}"
+                     includes="*count.txt *.output *test_results*"/>
+        </delete>
+    </target>
+
+    <!-- ee-init -->
+    <target name="ee-init">
+        <antcall target="startDerby"/>
+        <antcall target="eeunsetup"/>
+        <echo message="eeunsetup done..."/>
+        <echo message="Spawning eesetup.."/>
+        <antcall target="eesetup"/>
+        <echo message="eesetup done..."/>
+    </target>
+
+<target name="show-list">
+    <echo>
+         ============ Expected Outputs ==============
+         Executing ejb/stateless/converter [Total :1]
+         Executing ejb/mdb/simple [Total :1]
+         Executing ejb/bmp/enroller [Total :1]
+         Executing ejb/cmp/roster [Total :3]
+         Executing ejb/ejb30/hello/session [Total :1]
+         Executing corba [Total :1]
+         Executing connector/cci [Total :1]
+         Executing jndi/url  [Total :1]
+         Executing transaction/txglobal [Total :1]
+         Executing security/integration [Total :1]
+         Executing web/subclassing [Total :3]
+         ===========================================
+        </echo>
+        
+    </target>
+
+    <target name="sqetests">
+        <record name="sqetests.output" action="start" />
+            <ant dir="sqetests" target="all"/>
+        <record name="sqetests.output" action="stop" />
+    </target>
+
+    <target name="setupMQ" depends="setup-mq-common" />
+
+    <target name="usage">
+	<echo>
+		Usage:
+			ant sqetests (Executes all sqetests tests)
+			ant all (Executes all sqetests)
+            ant show-list (Lists all test suites)
+	</echo>
+    </target>
+</project>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sun-ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Sun ONE Application Server 7.0 EJB 2.0//EN' 'http://www.sun.com/software/sunone/appserver/dtds/sun-ejb-jar_2_0-0.dtd'>
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<sun-ejb-jar>
+  <enterprise-beans>
+    <ejb>
+      <ejb-name>SessionTest</ejb-name>
+      <jndi-name>MySessionTest</jndi-name>      
+      <resource-ref>
+   <res-ref-name>url/myURL</res-ref-name>
+   <jndi-name>http://jse.east.sun.com</jndi-name>
+</resource-ref>    
+      <pass-by-reference>false</pass-by-reference>       
+<bean-cache>
+<!--
+ In case a stateful bean represents a user, 
+ a healthy max-cache-size of beans could be the expected number of concurrent 
+ users on the application server process
+-->
+        <max-cache-size>1</max-cache-size>
+        <resize-quantity>0</resize-quantity>
+        <!-- at periodic intervals of cache-idle-timeout-in-seconds, 
+          all the beans in the cache that have not been accessed for more than 
+          cache-idle-timeout-in-seconds time, are passivated -->
+         <cache-idle-timeout-in-seconds>3</cache-idle-timeout-in-seconds> 
+         <!--  the bean is removed after ithas not been accessed 
+         for removal-timeout-in-seconds.A value of 0 specifies that the container
+          does not remove inactive beans automatically. The default value is 5400.
+          If removal-timeout-in-seconds is less than or equal to cache-idle-timeout-in-seconds, 
+          beans are removed immediately without being passivated. 
+         -->          
+         <removal-timeout-in-seconds>1000000</removal-timeout-in-seconds>
+         <!--
+         Possible values are First In, First Out (FIFO), Least Recently Used (LRU), Not Recently Used (NRU). The default value is NRU, which is actually pseudo-LRU.
+         The victims are generally passivated into a backup store (typically a file system or database).
+          This store is cleaned during startup, and also by a periodic background 
+          process that removes idle entries as specified by removal-timeout-in-seconds. 
+          The backup store is monitored by a background thread (or sweeper thread) 
+          to remove unwanted entries.
+         -->
+        <victim-selection-policy>LRU</victim-selection-policy>
+</bean-cache>
+</ejb>
+  </enterprise-beans>
+</sun-ejb-jar>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://oss.oracle.com/licenses/CDDL+GPL-1.1
+    or LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<project name="MBeanApi Config tests" default="all" basedir=".">
+
+<property name="testsRoot" value="."/>
+<property name="build" value="${testsRoot}/build"/>
+<property file="./bootstrap.subcomponent.properties"/>
+<property file="./../../../../../../bootstrap/bootstrap.properties"/>
+<property file="./../../../../../../appserv/build.properties"/>
+<property file="./../../../../../config.properties"/>
+<property file="./build.properties"/>
+
+
+    <path id="compile.classpath">
+        <pathelement location="${jmxri.jar}"/>
+        <pathelement location="${mbeanapi.jar}"/>
+        <pathelement location="${mbeanapi-impl.jar}"/>
+	    <pathelement location="${mgmtapi.jar}"/>
+    </path>
+
+    <path id="run.classpath">
+      <pathelement location="${build}"/>
+      <pathelement location="${jmxri.jar}"/>
+      <pathelement location="${mbeanapi.jar}"/>
+      <pathelement location="${mbeanapi-impl.jar}"/>
+      <pathelement location="${jmxremote.jar}"/>       
+      <pathelement location="${mgmtapi.jar}"/>
+    </path>
+
+    <target name="init" description="MBeanapi Tests initialization">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <!-- all -->
+    <target name="all" depends="build"
+        description="Build entire component" />
+
+    <!-- build -->
+    <target name="build" depends="compile"
+        description="Build entire component" />
+
+    <!-- compile -->
+    <target name="compile" depends="init">
+        <javac  srcdir="${src.dir}"
+                destdir="${build}"
+                debug="${javac.debug}"
+                optimize="${javac.optimize}"
+                source="${javac.source}"
+                deprecation="${javac.deprecation}"
+                failonerror="true">
+            <classpath refid="compile.classpath"/>
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <!-- clean -->
+    <target name="clean" description="clean">
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="run-standalone-instance-manager" description="runs the standalone instance manager unit test twice to create two standalone instances">
+      <java classname="com.sun.enterprise.admin.mbeanapi.common.StandaloneInstanceManager">
+	<classpath refid="run.classpath"/>
+	<arg value="${standalone.instance.one}"/>	
+      </java>
+      <java classname="com.sun.enterprise.admin.mbeanapi.common.StandaloneInstanceManager">
+	<classpath refid="run.classpath"/>
+	<arg value="${standalone.instance.two}"/>
+	<sysproperty key="HOST" value="localhost"/>
+	<sysproperty key="PORT" value="8686"/>
+	<sysproperty key="ADMIN_USER" value="admin"/>
+	<sysproperty key="ADMIN_PASSWORD" value="adminadmin"/>
+      </java>
+    </target>
+
+    <target name="run-amx-connection-verifier" description="runs the amx connection verifier unit test">
+      <java classname="com.sun.enterprise.admin.mbeanapi.common.AMXConnectionVerifier">
+	<classpath refid="run.classpath"/>
+	<arg value="${standalone.instance.one}"/>	
+	<sysproperty key="HOST" value="localhost"/>
+	<sysproperty key="PORT" value="8686"/>
+	<sysproperty key="ADMIN_USER" value="admin"/>
+	<sysproperty key="ADMIN_PASSWORD" value="adminadmin"/>
+      </java>
+    </target>
+</project>

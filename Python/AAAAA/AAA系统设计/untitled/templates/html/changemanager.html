@@ -1,0 +1,21 @@
+{% extends 'html/head.html'%}
+{% load static %}
+{% block head %}
+    <form method="post" action="{% url 'changePasswordmanager'%}" style="margin-top:82px;margin-left:450px;">
+    {% csrf_token %}
+  <div class="form-group">
+        <label for="exampleInputEmail1">用户名</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" disabled="disabled" value="{{ teacher }}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" name="password" placeholder="密码">
+  </div>
+
+  <button type="submit" class="btn btn-default">保存</button>
+</form>
+
+
+
+
+{% endblock %}

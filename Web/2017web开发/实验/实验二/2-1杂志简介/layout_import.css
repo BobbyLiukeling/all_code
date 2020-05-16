@@ -1,0 +1,14 @@
+#div0{
+  border: 1 solid #cccccc;/*solid边框为实线*/
+  width: 850px;
+  height: 780px;
+  margin: 5px auto;
+}
+
+
+
+#div3{
+  padding-left: 40px;
+  font-size: 14px;
+  clear: both;/*撑开外层div效果，只显示内层div效果*/
+}

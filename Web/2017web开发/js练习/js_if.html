@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+   document.write(" lalalala ");
+  //  var x=prompt("请输入成绩",);
+  //  if(x>80)
+  //  {alert(x+"为优秀");}
+  //  else
+  //  {
+  //    alert(x+"不优秀");
+  //  }
+   document.write("5"%2)
+   var a=["s","b","c"];
+   for(var i in a)
+   {
+     document.write("a["+i+"]:"+a[i]);
+   }
+  eval("x=10;y=11;document.write('x='+x+',y='+y+'x*y='+x*y)");
+  var c=eval("2+4");
+  document.write("c="+c);
+  document.write(escape("lalala刘珂伶")+"<br/>");
+ document.write(unescape("%u5218%u73C2%u4F36")+"<br/>");
+ document.write(parseInt("101010",2)+"<br/>");
+ document.write(isNaN(12)+"<br/>");
+ function area(a,b,c)
+ {
+   s=(parseFloat(a.value)*parseFloat(b.value)*parsefloat(c.value));
+   alert("体积为："+s);
+ }
+ document.write("<br/>");
+ document.write("<br/>");
+ document.write("<br/>");
+</script>
+<form action="">
+<input type="text" name="a" id="">
+<input type="text" name="b" id="">
+<input type="text" name="c" id="">
+<input type="button" onclick="area(a,b,c)" value="求面积"></form>
+</body>
+</html>
